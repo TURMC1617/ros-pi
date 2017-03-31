@@ -1,10 +1,10 @@
 #!/usr/bin/env python 
 import rospy
 import math
+import tf
 
 from time import time, sleep
 import sensor_msgs.msg
-from sensor_msgs.msg import Imu
 import geometry_msgs.msg
 from sense_hat import SenseHat
 
@@ -40,7 +40,14 @@ def imustream():
 
     #loop and stream IMU (gyro and accel) data
     while not rospy.is_shutdown():
+        #Stream Yaw, Pitch, Roll in quat
         o_deg = sense.get_orientation_degrees()
+        quaternion = tf.transformations.quaternion_from_euler(float(o_deg["x"]), float(o_deg["y"]), float(o_deg["z"])
+        #type(pose) = geometry_msgs.msg.Pose
+        imu.orientation.x = quaternion[0]
+        imu.orientation.y = quaternion[1]
+        imu.orientation.z = quaternion[2]
+        imu.orientation.w = quaternion[3]
         print(o_deg)
         sense.show_message("Streaming data")
         gyro_raw = sense.get_gyroscope_raw()
@@ -78,3 +85,19 @@ if __name__ == '__main__':
     except rospy.ROSInterruptException:
         pass
 
+
+
+
+
+
+#Reference Code: Convert Quat to Euler:
+#    #type(pose) = geometry_msgs.msg.Pose
+#quaternion = (
+#    pose.orientation.x,
+#    pose.orientation.y,
+#    pose.orientation.z,
+#    pose.orientation.w)
+#euler = tf.transformations.euler_from_quaternion(quaternion)
+#roll = euler[0]
+#pitch = euler[1]
+#yaw = euler[2]
