@@ -12,8 +12,8 @@ sense = SenseHat()
 gtoaccel = 9.81
 imu = sensor_msgs.msg.Imu()
 rospy.init_node("imu_node")
-imu_pub = rospy.Publisher('Imu/imuTopic', Imu ,queue_size=500)
-rate = rospy.Rate(1000)
+imu_pub = rospy.Publisher('Imu/imuTopic', Imu ,queue_size=1)
+rate = rospy.Rate(5000)
 sense.set_imu_config(False, True, True)
 
 
@@ -41,6 +41,7 @@ def imustream():
     #loop and stream IMU (gyro and accel) data
     while not rospy.is_shutdown():
         #Stream Yaw, Pitch, Roll in quat
+        #o_deg is in radians
         o_deg = sense.get_orientation_degrees()
         quaternion = tf.transformations.quaternion_from_euler(float(o_deg["x"]), float(o_deg["y"]), float(o_deg["z"])
         #type(pose) = geometry_msgs.msg.Pose
