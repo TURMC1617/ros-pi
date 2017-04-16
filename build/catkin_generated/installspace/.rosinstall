@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/swilso421/ros-pi/install/setup.sh
+    local-name: /home/pi/rospi_ws/install/setup.sh

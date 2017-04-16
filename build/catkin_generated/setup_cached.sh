@@ -7,7 +7,6 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/swilso421/ros-pi/devel:$CMAKE_PREFIX_PATH"
-export PWD="/home/swilso421/ros-pi/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/swilso421/ros-pi/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/swilso421/ros-pi/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/pi/rospi_ws/devel:$CMAKE_PREFIX_PATH"
+export PWD="/home/pi/rospi_ws/build"
+export ROS_PACKAGE_PATH="/home/pi/rospi_ws/src:$ROS_PACKAGE_PATH"

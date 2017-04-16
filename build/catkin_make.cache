@@ -1,2 +1,2 @@
 
--DCATKIN_DEVEL_PREFIX=/home/swilso421/ros-pi/devel -DCMAKE_INSTALL_PREFIX=/home/swilso421/ros-pi/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/pi/rospi_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pi/rospi_ws/install -G Unix Makefiles
